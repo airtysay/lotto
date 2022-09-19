@@ -36,13 +36,15 @@
             this.ListNum = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("맑은 고딕", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label1.Location = new System.Drawing.Point(31, 24);
+            this.label1.Location = new System.Drawing.Point(45, 35);
             this.label1.MaximumSize = new System.Drawing.Size(500, 300);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(448, 86);
@@ -53,7 +55,7 @@
             // btnClickThis
             // 
             this.btnClickThis.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.btnClickThis.Location = new System.Drawing.Point(105, 323);
+            this.btnClickThis.Location = new System.Drawing.Point(285, 303);
             this.btnClickThis.Name = "btnClickThis";
             this.btnClickThis.Size = new System.Drawing.Size(113, 45);
             this.btnClickThis.TabIndex = 1;
@@ -64,9 +66,9 @@
             // btnEnd
             // 
             this.btnEnd.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.btnEnd.Location = new System.Drawing.Point(301, 323);
+            this.btnEnd.Location = new System.Drawing.Point(465, 3);
             this.btnEnd.Name = "btnEnd";
-            this.btnEnd.Size = new System.Drawing.Size(113, 45);
+            this.btnEnd.Size = new System.Drawing.Size(38, 26);
             this.btnEnd.TabIndex = 2;
             this.btnEnd.Text = "End";
             this.btnEnd.UseVisualStyleBackColor = true;
@@ -82,7 +84,7 @@
             "3",
             "4",
             "5"});
-            this.comboBox1.Location = new System.Drawing.Point(192, 294);
+            this.comboBox1.Location = new System.Drawing.Point(130, 315);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(121, 23);
             this.comboBox1.TabIndex = 3;
@@ -91,7 +93,7 @@
             // textBox1
             // 
             this.textBox1.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.textBox1.Location = new System.Drawing.Point(99, 124);
+            this.textBox1.Location = new System.Drawing.Point(97, 124);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(315, 150);
@@ -102,9 +104,9 @@
             // ListNum
             // 
             this.ListNum.FormattingEnabled = true;
-            this.ListNum.Location = new System.Drawing.Point(105, 412);
+            this.ListNum.Location = new System.Drawing.Point(130, 386);
             this.ListNum.Name = "ListNum";
-            this.ListNum.Size = new System.Drawing.Size(113, 20);
+            this.ListNum.Size = new System.Drawing.Size(121, 20);
             this.ListNum.TabIndex = 6;
             this.ListNum.SelectedIndexChanged += new System.EventHandler(this.ListNyn_SelectedIndexChanged);
             this.ListNum.Click += new System.EventHandler(this.ListNum_Click);
@@ -112,7 +114,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(200, 383);
+            this.label2.Location = new System.Drawing.Point(194, 360);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(121, 12);
             this.label2.TabIndex = 7;
@@ -120,7 +122,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(323, 409);
+            this.button1.Location = new System.Drawing.Point(323, 383);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 8;
@@ -128,21 +130,41 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.ColumnCount = 2;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 462F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 8F));
+            this.tableLayoutPanel1.Controls.Add(this.btnEnd, 1, 0);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 1;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(506, 32);
+            this.tableLayoutPanel1.TabIndex = 9;
+            this.tableLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel1_Paint);
+            this.tableLayoutPanel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pnlTop_MouseDown);
+            this.tableLayoutPanel1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pntTop_MouseMove);
+            this.tableLayoutPanel1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pntTop_MouseUp);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(505, 444);
+            this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.ListNum);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.comboBox1);
-            this.Controls.Add(this.btnEnd);
             this.Controls.Add(this.btnClickThis);
             this.Controls.Add(this.label1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Form1";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.Form1_Load);
+            this.tableLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -158,6 +180,7 @@
         private System.Windows.Forms.ComboBox ListNum;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
     }
 }
 

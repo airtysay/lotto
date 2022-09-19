@@ -17,6 +17,8 @@ namespace lotto
         int pick;
         int repeat;
         string text;
+        Point fPt;
+        bool isMove;
 
         public Form1()
         {
@@ -166,6 +168,42 @@ namespace lotto
             }
             List.Close();  
 
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        {
+            base.OnPaint(e);
+            int borderWidth = 100;
+            Color borderColor = Color.Blue;
+
+            /*ControlPaint.DrawBorder(e.Graphics, e.ClipRectangle, borderColor, borderWidth,
+            ButtonBorderStyle.Solid, borderColor, borderWidth,
+            ButtonBorderStyle.Solid, borderColor, borderWidth, 
+            ButtonBorderStyle.Solid, borderColor, borderWidth, 
+            ButtonBorderStyle.Solid);*/
+        }
+
+        private void pnlTop_MouseDown(object sender, MouseEventArgs e)
+        {
+            isMove = true;
+            fPt = new Point(e.X,e.Y);
+            
+        }
+
+        private void pntTop_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (isMove && (e.Button & MouseButtons.Left) == MouseButtons.Left)
+                Location = new Point(this.Left-(fPt.X-e.X),this.Top - (fPt.Y -e.Y));
+        }
+
+        private void pntTop_MouseUp(object sender, MouseEventArgs e)
+        {
+            isMove=false;
         }
     }
 }
