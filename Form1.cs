@@ -14,41 +14,43 @@ namespace lotto
 {
     public partial class Form1 : Form
     {
+        int pick;
         int repeat;
         string text;
-        
+
         public Form1()
         {
             InitializeComponent();
-            
+
         }
 
         private void label1_Click(object sender, EventArgs e)
         {
-            
+
         }
 
         private void btnThisClick(object sender, EventArgs e)
         {
-            
+
             string conmStr = @"Data Source=C:\Users\Owner\Documents\GitHub\lotto2\lottodb.db";
             var con = new SQLiteConnection(conmStr);
-                con.Open();
-            
+            con.Open();
+
             for (int i = 0; i <= repeat; i++)
             {
                 textBox1.Clear();
                 string Number;
                 Random random = new Random();
                 int[] RandomArray = new int[6];
- 
-                 
 
-                for (int j = 0; j < 6; j++) {
+
+
+                for (int j = 0; j < 6; j++)
+                {
                     RandomArray[j] = random.Next(1, 45);
                     Delay(5);
 
-                    for(int  x= 0; x<=j; x++)
+                    for (int x = 0; x <= j; x++)
                     {
                         if (RandomArray[j] == RandomArray[j - x])
                         {
@@ -74,7 +76,7 @@ namespace lotto
                     }
                 }
                 int bonus = random.Next(1, 45);
-                for(int x = 0; x < 6; x++)
+                for (int x = 0; x < 6; x++)
                 {
                     if (RandomArray[x] == bonus)
                     {
@@ -85,13 +87,13 @@ namespace lotto
 
                     }
                 }
-                
+
                 Number = String.Join(",", RandomArray);
-                String sql = "insert into LottoNumber (LottoNumber) values('" + Number +"보너스 번호: " +bonus+ "')";
+                String sql = "insert into LottoNumber (LottoNumber) values('" + Number + "보너스 번호: " + bonus + "')";
                 text += Number + "보너스 번호: " + bonus + "\r\n";
-                SQLiteCommand command = new SQLiteCommand(sql,con);
+                SQLiteCommand command = new SQLiteCommand(sql, con);
                 Console.WriteLine(sql);
-             
+
                 int result = command.ExecuteNonQuery();
             }
             textBox1.Text = text;
@@ -105,14 +107,14 @@ namespace lotto
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            repeat = comboBox1.SelectedIndex;  
+            repeat = comboBox1.SelectedIndex;
         }
         private void button2_Click(object sender, EventArgs e)
         {
             Close();
         }
 
-       
+
         public void Delay(int ms)
         {
             DateTime dateTimeNow = DateTime.Now;
@@ -125,6 +127,45 @@ namespace lotto
             }
             return;
         }
-        
+
+        private void ListNum_Click(object sender, EventArgs e)
+        {
+            ListNum.Items.Clear();
+            string conmStr = @"Data Source=C:\Users\Owner\Documents\GitHub\lotto2\lottodb.db";
+            var con = new SQLiteConnection(conmStr);
+            con.Open();
+            String sql = "SELECT NUM FROM LottoNumber;";
+            SQLiteCommand command = new SQLiteCommand(sql, con);
+            SQLiteDataReader Num = command.ExecuteReader();
+
+            while (Num.Read())
+            {
+                ListNum.Items.AddRange(new object[] { Num["Num"] });
+            }
+            Num.Close();
+        }
+
+        private void ListNyn_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            pick = ListNum.SelectedIndex;
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            textBox1.Clear();
+            string conmStr = @"Data Source=C:\Users\Owner\Documents\GitHub\lotto2\lottodb.db";
+            var con = new SQLiteConnection(conmStr);
+            con.Open();
+            String sql = "SELECT * FROM LottoNumber WHERE Num = " + pick + ";";
+            SQLiteCommand command = new SQLiteCommand(sql, con);
+            SQLiteDataReader List = command.ExecuteReader();
+            while (List.Read())
+            {
+                textBox1.Text = (string)List["LottoNumber"];
+            }
+            List.Close();  
+
+        }
     }
 }

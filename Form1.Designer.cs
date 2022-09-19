@@ -35,6 +35,7 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.ListNum = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -105,6 +106,8 @@
             this.ListNum.Name = "ListNum";
             this.ListNum.Size = new System.Drawing.Size(113, 20);
             this.ListNum.TabIndex = 6;
+            this.ListNum.SelectedIndexChanged += new System.EventHandler(this.ListNyn_SelectedIndexChanged);
+            this.ListNum.Click += new System.EventHandler(this.ListNum_Click);
             // 
             // label2
             // 
@@ -115,11 +118,22 @@
             this.label2.TabIndex = 7;
             this.label2.Text = "회차별 당첨번호 조회";
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(323, 409);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 8;
+            this.button1.Text = "조회";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(505, 444);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.ListNum);
             this.Controls.Add(this.textBox1);
@@ -143,6 +157,7 @@
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.ComboBox ListNum;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button button1;
     }
 }
 
