@@ -179,13 +179,13 @@ namespace lotto
         {
             base.OnPaint(e);
             int borderWidth = 100;
-            Color borderColor = Color.Blue;
+            Color borderColor = Color.White;
 
-            /*ControlPaint.DrawBorder(e.Graphics, e.ClipRectangle, borderColor, borderWidth,
+            ControlPaint.DrawBorder(e.Graphics, e.ClipRectangle, borderColor, borderWidth,
             ButtonBorderStyle.Solid, borderColor, borderWidth,
             ButtonBorderStyle.Solid, borderColor, borderWidth, 
             ButtonBorderStyle.Solid, borderColor, borderWidth, 
-            ButtonBorderStyle.Solid);*/
+            ButtonBorderStyle.Solid);
         }
 
         private void pnlTop_MouseDown(object sender, MouseEventArgs e)
@@ -204,6 +204,11 @@ namespace lotto
         private void pntTop_MouseUp(object sender, MouseEventArgs e)
         {
             isMove=false;
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

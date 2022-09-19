@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.label1 = new System.Windows.Forms.Label();
             this.btnClickThis = new System.Windows.Forms.Button();
             this.btnEnd = new System.Windows.Forms.Button();
@@ -37,7 +38,9 @@
             this.label2 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.tableLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -55,7 +58,7 @@
             // btnClickThis
             // 
             this.btnClickThis.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.btnClickThis.Location = new System.Drawing.Point(285, 303);
+            this.btnClickThis.Location = new System.Drawing.Point(288, 313);
             this.btnClickThis.Name = "btnClickThis";
             this.btnClickThis.Size = new System.Drawing.Size(113, 45);
             this.btnClickThis.TabIndex = 1;
@@ -84,7 +87,7 @@
             "3",
             "4",
             "5"});
-            this.comboBox1.Location = new System.Drawing.Point(130, 315);
+            this.comboBox1.Location = new System.Drawing.Point(133, 325);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(121, 23);
             this.comboBox1.TabIndex = 3;
@@ -93,7 +96,7 @@
             // textBox1
             // 
             this.textBox1.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.textBox1.Location = new System.Drawing.Point(97, 124);
+            this.textBox1.Location = new System.Drawing.Point(100, 134);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(315, 150);
@@ -104,7 +107,7 @@
             // ListNum
             // 
             this.ListNum.FormattingEnabled = true;
-            this.ListNum.Location = new System.Drawing.Point(130, 386);
+            this.ListNum.Location = new System.Drawing.Point(133, 396);
             this.ListNum.Name = "ListNum";
             this.ListNum.Size = new System.Drawing.Size(121, 20);
             this.ListNum.TabIndex = 6;
@@ -114,7 +117,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(194, 360);
+            this.label2.Location = new System.Drawing.Point(197, 370);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(121, 12);
             this.label2.TabIndex = 7;
@@ -122,7 +125,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(323, 383);
+            this.button1.Location = new System.Drawing.Point(326, 393);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 8;
@@ -136,6 +139,7 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 462F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 8F));
             this.tableLayoutPanel1.Controls.Add(this.btnEnd, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.pictureBox1, 0, 0);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
@@ -147,11 +151,21 @@
             this.tableLayoutPanel1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pntTop_MouseMove);
             this.tableLayoutPanel1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pntTop_MouseUp);
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(3, 3);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(46, 26);
+            this.pictureBox1.TabIndex = 10;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(505, 444);
+            this.ClientSize = new System.Drawing.Size(505, 440);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label2);
@@ -165,6 +179,7 @@
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -181,6 +196,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
 
