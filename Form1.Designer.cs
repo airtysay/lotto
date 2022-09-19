@@ -33,7 +33,8 @@
             this.btnEnd = new System.Windows.Forms.Button();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.ListNum = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -97,22 +98,30 @@
             this.textBox1.WordWrap = false;
             this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
-            // button1
+            // ListNum
             // 
-            this.button1.Location = new System.Drawing.Point(339, 294);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 5;
-            this.button1.Text = "arrange";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.arrange);
+            this.ListNum.FormattingEnabled = true;
+            this.ListNum.Location = new System.Drawing.Point(105, 412);
+            this.ListNum.Name = "ListNum";
+            this.ListNum.Size = new System.Drawing.Size(113, 20);
+            this.ListNum.TabIndex = 6;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(200, 383);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(121, 12);
+            this.label2.TabIndex = 7;
+            this.label2.Text = "회차별 당첨번호 조회";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(505, 390);
-            this.Controls.Add(this.button1);
+            this.ClientSize = new System.Drawing.Size(505, 444);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.ListNum);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.btnEnd);
@@ -132,7 +141,8 @@
         private System.Windows.Forms.Button btnEnd;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.ComboBox ListNum;
+        private System.Windows.Forms.Label label2;
     }
 }
 

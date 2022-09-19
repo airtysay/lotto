@@ -14,7 +14,6 @@ namespace lotto
 {
     public partial class Form1 : Form
     {
-        int argNum = 0;
         int repeat;
         string text;
         
@@ -42,32 +41,54 @@ namespace lotto
                 string Number;
                 Random random = new Random();
                 int[] RandomArray = new int[6];
-                Console.WriteLine(argNum);
-               
+ 
+                 
+
                 for (int j = 0; j < 6; j++) {
                     RandomArray[j] = random.Next(1, 45);
                     Delay(5);
-                }
-                if (argNum == 1)
-                {
-                    for (int y = 0; y <= 6; y++)
-                    {
-                        for (int k = 0; k < 5; k++)
-                        {
-                            if (RandomArray[k + 1] < RandomArray[k])
-                            {
-                                int q = RandomArray[k];
-                                RandomArray[k] = RandomArray[k + 1];
-                                RandomArray[k + 1] = q;
 
-                            }
+                    for(int  x= 0; x<=j; x++)
+                    {
+                        if (RandomArray[j] == RandomArray[j - x])
+                        {
+                            RandomArray[j] = random.Next(1, 45);
+                        }
+                        else
+                        {
+
                         }
                     }
-
                 }
+                for (int y = 0; y <= 6; y++)
+                {
+                    for (int k = 0; k < 5; k++)
+                    {
+                        if (RandomArray[k + 1] < RandomArray[k])
+                        {
+                            int q = RandomArray[k];
+                            RandomArray[k] = RandomArray[k + 1];
+                            RandomArray[k + 1] = q;
+
+                        }
+                    }
+                }
+                int bonus = random.Next(1, 45);
+                for(int x = 0; x < 6; x++)
+                {
+                    if (RandomArray[x] == bonus)
+                    {
+                        bonus = random.Next(1, 45);
+                    }
+                    else
+                    {
+
+                    }
+                }
+                
                 Number = String.Join(",", RandomArray);
-                String sql = "insert into LottoNumber (LottoNumber) values('" + Number + "')";
-                text += Number + "\r\n";
+                String sql = "insert into LottoNumber (LottoNumber) values('" + Number +"보너스 번호: " +bonus+ "')";
+                text += Number + "보너스 번호: " + bonus + "\r\n";
                 SQLiteCommand command = new SQLiteCommand(sql,con);
                 Console.WriteLine(sql);
              
@@ -91,19 +112,7 @@ namespace lotto
             Close();
         }
 
-        private void arrange(object sender, EventArgs e)
-        {
-            if (argNum == 1)
-            {
-               argNum = 0;
-                button1.Text = "arrange";    
-            }
-            else 
-            {
-                button1.Text = "Unarrange";
-                argNum = 1;
-            }   
-        }
+       
         public void Delay(int ms)
         {
             DateTime dateTimeNow = DateTime.Now;
