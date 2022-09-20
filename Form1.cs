@@ -19,7 +19,7 @@ namespace lotto
         string text;
         Point fPt;
         bool isMove;
-        int a;
+        int a,b;
 
         public Form1()
         {
@@ -72,11 +72,7 @@ namespace lotto
                 //로또 번호 출력
                 Array.Sort(RandomArray,0,6);
                 //색칠
-                    for(int i = 0; i < 7; i++)
-                {
-                }
                     a = RandomArray[0];
-
                     switch (a)
                     {
                         case int a when (a < 10):
@@ -115,8 +111,49 @@ namespace lotto
                             g.Dispose();
                             break;
                     }
-                
-                
+
+
+                b = RandomArray[1];
+                switch (b)
+                {
+                    case int b when (b < 10):
+                        Graphics g = pictureBox2.CreateGraphics();
+                        SolidBrush sb = new SolidBrush(Color.Yellow);
+                        Rectangle r = new Rectangle(0, 0, 50, 50);
+                        g.FillEllipse(sb, r);
+                        g.Dispose();
+                        break;
+                    case int b when (b < 20):
+                        g = pictureBox2.CreateGraphics();
+                        sb = new SolidBrush(Color.Red);
+                        r = new Rectangle(0, 0, 50, 50);
+                        g.FillEllipse(sb, r);
+                        g.Dispose();
+                        break;
+                    case int b when (b < 30):
+                        g = pictureBox2.CreateGraphics();
+                        sb = new SolidBrush(Color.Green);
+                        r = new Rectangle(0, 0, 50, 50);
+                        g.FillEllipse(sb, r);
+                        g.Dispose();
+                        break;
+                    case int b when (b < 40):
+                        g = pictureBox2.CreateGraphics();
+                        sb = new SolidBrush(Color.Black);
+                        r = new Rectangle(0, 0, 50, 50);
+                        g.FillEllipse(sb, r);
+                        g.Dispose();
+                        break;
+                    case int b when (b < 50):
+                        g = pictureBox2.CreateGraphics();
+                        sb = new SolidBrush(Color.SkyBlue);
+                        r = new Rectangle(0, 0, 50, 50);
+                        g.FillEllipse(sb, r);
+                        g.Dispose();
+                        break;
+                }
+
+
                 text = "로또 번호; "
                     + RandomArray[0] + ","
                     + RandomArray[1] + ","
@@ -133,11 +170,6 @@ namespace lotto
                 Console.WriteLine(a);
                 int result = command.ExecuteNonQuery();
             }
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -203,10 +235,7 @@ namespace lotto
 
         }
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
+     
         //탑바 색조절
         private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
         {
