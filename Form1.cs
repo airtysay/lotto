@@ -19,6 +19,7 @@ namespace lotto
         string text;
         Point fPt;
         bool isMove;
+        int a;
 
         public Form1()
         {
@@ -31,75 +32,107 @@ namespace lotto
 
         }
 
-        private void btnThisClick(object sender, EventArgs e)
+        private void btnThisClick(object sender, EventArgs e)//로또 뽑기를 클릭시 실행
         {
-
-            string conmStr = @"Data Source=C:\Users\Owner\Documents\GitHub\lotto2\lottodb.db";
+            
+            textBox1.Clear();
+            //DB연동
+            string conmStr = @"Data Source=C:\Users\Owner\Documents\GitHub\lotto2\lotto2db.db";
             var con = new SQLiteConnection(conmStr);
             con.Open();
-
-            for (int i = 0; i <= repeat; i++)
+                
+            //Lotto 번호 생성
+            Random random = new Random();
+            int[] RandomArray = new int[7];// List 사용 안하고 Array 사용(크기가 고정)
+            int lottoNum;
+            //원하는 횟수 만큼 뽑기 가능
+            for (int k = 0; k <= repeat; k++)
             {
-                textBox1.Clear();
-                string Number;
-                Random random = new Random();
-                int[] RandomArray = new int[6];
-
-
-
-                for (int j = 0; j < 6; j++)
+                for (int i = 0; i < 7; i++)
                 {
-                    RandomArray[j] = random.Next(1, 45);
-                    Delay(5);
-
-                    for (int x = 0; x <= j; x++)
+                    do
                     {
-                        if (RandomArray[j] == RandomArray[j - x])
-                        {
-                            RandomArray[j] = random.Next(1, 45);
-                        }
-                        else
-                        {
-
-                        }
+                        lottoNum = random.Next(1, 46);
                     }
+                    while (RandomArray.Contains(lottoNum));
+                    RandomArray[i] = lottoNum;
                 }
-                for (int y = 0; y <= 6; y++)
-                {
-                    for (int k = 0; k < 5; k++)
-                    {
-                        if (RandomArray[k + 1] < RandomArray[k])
-                        {
-                            int q = RandomArray[k];
-                            RandomArray[k] = RandomArray[k + 1];
-                            RandomArray[k + 1] = q;
+                //insert 문 (축약시킬 방법을 모르겠음)
+                String sql = "insert into LottoNumber (LottoNum1,LottoNum2,LottoNum3,LottoNum4,LottoNum5,LottoNum6,LottoNum7) values("
+                    + RandomArray[0] + ","
+                    + RandomArray[1] + ","
+                    + RandomArray[2] + ","
+                    + RandomArray[3] + ","
+                    + RandomArray[4] + ","
+                    + RandomArray[5] + ","
+                    + RandomArray[6] + ")";
 
-                        }
-                    }
-                }
-                int bonus = random.Next(1, 45);
-                for (int x = 0; x < 6; x++)
-                {
-                    if (RandomArray[x] == bonus)
-                    {
-                        bonus = random.Next(1, 45);
-                    }
-                    else
-                    {
-
-                    }
-                }
-
-                Number = String.Join(",", RandomArray);
-                String sql = "insert into LottoNumber (LottoNumber) values('" + Number + "보너스 번호: " + bonus + "')";
-                text += Number + "보너스 번호: " + bonus + "\r\n";
                 SQLiteCommand command = new SQLiteCommand(sql, con);
-                Console.WriteLine(sql);
 
+                //로또 번호 출력
+                Array.Sort(RandomArray,0,6);
+                //색칠
+                    for(int i = 0; i < 7; i++)
+                {
+                }
+                    a = RandomArray[0];
+
+                    switch (a)
+                    {
+                        case int a when (a < 10):
+                            Graphics g = pictureBox1.CreateGraphics();
+                            SolidBrush sb = new SolidBrush(Color.Yellow);
+                            Rectangle r = new Rectangle(0, 0, 50, 50);
+                            g.FillEllipse(sb, r);
+                            g.Dispose();
+                            break;
+                        case int a when (a < 20):
+                            g = pictureBox1.CreateGraphics();
+                            sb = new SolidBrush(Color.Red);
+                            r = new Rectangle(0, 0, 50, 50);
+                            g.FillEllipse(sb, r);
+                            g.Dispose();
+                            break;
+                        case int a when (a < 30):
+                            g = pictureBox1.CreateGraphics();
+                            sb = new SolidBrush(Color.Green);
+                            r = new Rectangle(0, 0, 50, 50);
+                            g.FillEllipse(sb, r);
+                            g.Dispose();
+                            break;
+                        case int a when (a < 40):
+                            g = pictureBox1.CreateGraphics();
+                            sb = new SolidBrush(Color.Black);
+                            r = new Rectangle(0, 0, 50, 50);
+                            g.FillEllipse(sb, r);
+                            g.Dispose();
+                            break;
+                        case int a when (a < 50):
+                            g = pictureBox1.CreateGraphics();
+                            sb = new SolidBrush(Color.SkyBlue);
+                            r = new Rectangle(0, 0, 50, 50);
+                            g.FillEllipse(sb, r);
+                            g.Dispose();
+                            break;
+                    }
+                
+                
+                text = "로또 번호; "
+                    + RandomArray[0] + ","
+                    + RandomArray[1] + ","
+                    + RandomArray[2] + ","
+                    + RandomArray[3] + ","
+                    + RandomArray[4] + ","
+                    + RandomArray[5] + ","
+                    +
+                    "보너스 번호: "
+                    + RandomArray[6];
+
+                textBox1.Text += text+"\r\n";
+
+                Console.WriteLine(a);
                 int result = command.ExecuteNonQuery();
             }
-            textBox1.Text = text;
-            text = "";
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
@@ -174,7 +207,7 @@ namespace lotto
         {
 
         }
-
+        //탑바 색조절
         private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
         {
             base.OnPaint(e);
@@ -188,6 +221,7 @@ namespace lotto
             ButtonBorderStyle.Solid);
         }
 
+        //탑바 이동관련
         private void pnlTop_MouseDown(object sender, MouseEventArgs e)
         {
             isMove = true;
@@ -206,14 +240,5 @@ namespace lotto
             isMove=false;
         }
 
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button2_Click_1(object sender, EventArgs e)
-        {
-
-        }
     }
 }
